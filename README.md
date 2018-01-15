@@ -4,5 +4,5 @@ This repo holds files that make up my first attempt at creating a VST synthesize
 JUCE is a C++ framework that was designed specifically for users to create their own VSTs (Virtual Studio Technology), which are software interfaces that allow for the use of software audio synthesizer, effects plugins, and recording systems.
 https://juce.com/
 
-There is a great Youtube channel called "The Audio Programmer" that creates tutorials based on JUCE. I wil be following these tutorials to help get me started in creating my first simple synthesizer plugin.
+There is a great Youtube channel called "The Audio Programmer" that creates tutorials based on JUCE. I will be following these tutorials to help get me started in creating my first simple synthesizer plugin.
 https://www.youtube.com/watch?v=Kpk67-nfpR0
