@@ -56,6 +56,14 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    
+    
+    //=======================================
+    //============= Added By Me =============
+    //=======================================
+    
+    float attackTime;
 
 private:
     Synthesiser mySynth;

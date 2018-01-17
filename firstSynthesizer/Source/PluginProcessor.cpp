@@ -22,7 +22,9 @@ SynthFrameworkAudioProcessor::SynthFrameworkAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
+// Initialize attack slider at startup
+attackTime(0.1f)
 #endif
 {
     // When we press a note, we don't want previous note presses to interfere with the next note.
@@ -155,7 +157,10 @@ bool SynthFrameworkAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
 void SynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     
-    ScopedNoDenormals noDenormals;
+    //ScopedNoDenormals noDenormals;
+    
+    // Outputs the attack slider's value to the console
+    // std::cout << attackTime << std::endl;
     
     buffer.clear();
     

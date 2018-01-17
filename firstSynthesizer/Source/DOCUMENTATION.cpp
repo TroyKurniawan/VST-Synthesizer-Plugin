@@ -15,4 +15,9 @@
         - SynthesizerSound: https://juce.com/doc/classSynthesiserSound
         - SynthesizerVoice: https://juce.com/doc/classSynthesiserVoice
  
+ PluginEditor
+    - Edits to the UI are made here.
+ 
+ PluginVoice
+    - Edits to the synthesizer's sound are made here.
 */
