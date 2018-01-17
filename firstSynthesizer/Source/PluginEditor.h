@@ -35,6 +35,9 @@ private:
     // access the processor object that created it.
     SynthFrameworkAudioProcessor& processor;
 
+    // Used to connect the sliders to the parameters.
+    ScopedPointer <AudioProcessorValueTreeState::SliderAttachment> sliderTree;
+    
     // Sliders are used to adjust the settings of various parameters.
     // Here, we are making sliders for the ADSR envelope.
     Slider attackSlider;

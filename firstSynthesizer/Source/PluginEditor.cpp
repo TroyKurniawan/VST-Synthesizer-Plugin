@@ -20,6 +20,10 @@ SynthFrameworkAudioProcessorEditor::SynthFrameworkAudioProcessorEditor (SynthFra
     // editor's size to whatever you need it to be.
     setSize (400, 300);
     
+    
+    
+    // ATTACK
+    
     attackSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
     attackSlider.setRange(0.1f, 5000.0f);     // Arguments are in milliseconds
     attackSlider.setValue(0.1f);
@@ -30,6 +34,10 @@ SynthFrameworkAudioProcessorEditor::SynthFrameworkAudioProcessorEditor (SynthFra
     
     attackSlider.addListener(this);
     addAndMakeVisible(&attackSlider);
+    
+    // Links the slider between the PluginEditor.cpp and the PluginProcessor.cpp.
+    sliderTree = new AudioProcessorValueTreeState::SliderAttachment(processor.tree, "attack", attackSlider);
+    
 }
 
 SynthFrameworkAudioProcessorEditor::~SynthFrameworkAudioProcessorEditor()
@@ -44,7 +52,13 @@ void SynthFrameworkAudioProcessorEditor::paint (Graphics& g)
 
     g.setColour (Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), Justification::centred, 1);
+    g.drawFittedText ("Troy's Simple VST Synthesizer Plugin!", getLocalBounds(), Justification::centredBottom, 1);
+    
+    // Attack Slider Box
+    g.drawRect(5.0f, 5.0f, 50.0f, 160.0f);
+    
+    // Line Above Bottom Text
+    g.drawLine(30, 280, 370, 280);
 }
 
 void SynthFrameworkAudioProcessorEditor::resized()

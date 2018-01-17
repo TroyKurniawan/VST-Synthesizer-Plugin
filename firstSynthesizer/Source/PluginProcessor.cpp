@@ -24,9 +24,15 @@ SynthFrameworkAudioProcessor::SynthFrameworkAudioProcessor()
                      #endif
                        ),
 // Initialize attack slider at startup
-attackTime(0.1f)
+attackTime(0.1f),
+tree(*this, nullptr)
 #endif
 {
+    // We need to connect the attack slider to the actual attack value using the AudioProcessorValueTreeState class
+    // https://juce.com/doc/classAudioProcessorValueTreeState
+    NormalisableRange<float> attackParam(0.1f, 5000.0f);
+    tree.createAndAddParameter("attack", "Attack", "Attack", attackParam, 0.1f, nullptr, nullptr);
+    
     // When we press a note, we don't want previous note presses to interfere with the next note.
     mySynth.clearVoices();
     
@@ -156,8 +162,13 @@ bool SynthFrameworkAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
 
 void SynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-    
-    //ScopedNoDenormals noDenormals;
+    for(int i=0; i<mySynth.getNumVoices(); i++)
+    {
+        if((myVoice = dynamic_cast<SynthVoice*>(mySynth.getVoice(i))))
+        {
+            myVoice->getParam(tree.getRawParameterValue("attack"));
+        }
+    }
     
     // Outputs the attack slider's value to the console
     // std::cout << attackTime << std::endl;

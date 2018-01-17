@@ -64,6 +64,7 @@ public:
     //=======================================
     
     float attackTime;
+    AudioProcessorValueTreeState tree;
 
 private:
     Synthesiser mySynth;
