@@ -14,6 +14,12 @@ For the plugin, premade libraries need to be used to produce the sounds. I am us
 http://maximilian.strangeloop.co.uk/
 https://github.com/micknoise/Maximilian
 
-**CURRENT STATUS OF THE PROJECT (1-15-17)**
+____________________________________________
+
+**CURRENT STATUS OF THE PROJECT (1-16-17)**
 
 The synthesizer software currently is able to produce a saw wave "plucking" sound. A lowpass filter is applied to cut away higher frequencies. ADSR (Attack, Decay, Sustain, Release) and filter settings can be adjusted within the code.
+
+A slider has been added to the UI that can adjust the attack of the synthesizer. The attack ranges from 0.1ms to 5000ms (or 0.0001s to 5s).
+
+Simple changes were made to UI
