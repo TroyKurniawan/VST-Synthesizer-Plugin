@@ -1,4 +1,4 @@
-# Simple-VST-Synthsizer-Plugin
+# VST-Synthesizer-Plugin
 
 **BACKGROUND**
 
