@@ -92,23 +92,25 @@ public:
     {
         // Envelope "ADSR" Settings (Attack is handled above in "getParam")
         env1.setDecay(500);
-        env1.setSustain(0.1);   // Choose a value from 0 to 1
-        env1.setRelease(500);
+        env1.setSustain(1);   // Choose a value from 0 to 1
+        env1.setRelease(0);
         
         for (int sample=0; sample<numSamples; ++sample)
         {
             // Sets the waveform that goes to the output; oscillator currently outputs a 440hz sine wave.
-            double theWave = osc1.saw(frequency) * level;
+            double theWave = osc1.square(frequency) * level;
             
             // Set the sound to the envelope settings declared previously
             double theSound = env1.adsr(theWave, env1.trigger) * level;
             
             // Applies a filter to theSound
-            double filteredSound = fil1.lores(theSound, 800, 0);
+            double filteredSound = fil1.lores(theSound, 5000, 0);
+            
+            double finalSound = theSound;
             
             for (int channel = 0; channel<outputBuffer.getNumChannels(); ++ channel)
             {
-                outputBuffer.addSample(channel, startSample, filteredSound);
+                outputBuffer.addSample(channel, startSample, finalSound);
             }
             ++startSample;
         }
